@@ -13,6 +13,6 @@ Running
 To run this config against a vm:
 
 1. Name the vm in ~/.ansible/hosts
-2. Run this command from this directory: `ansible-playbook main.yml -l <host>`
+2. Run this command from this directory: `ansible-playbook everything.yml -l <host>`
 3. After a little wait, you should have an up to date system that has all of my
    tools and dotfiles in place.
