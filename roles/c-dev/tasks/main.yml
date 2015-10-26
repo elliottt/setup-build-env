@@ -1,0 +1,4 @@
+- name: Install gcc
+  sudo: yes
+  dnf:  name=gcc state=latest
+  when: ansible_distribution == 'Fedora'
