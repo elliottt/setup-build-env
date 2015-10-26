@@ -1,0 +1,63 @@
+
+# Packages (Fedora) ############################################################
+
+- name: Update all packages
+  sudo: yes
+  dnf:  name=* state=latest
+  when: ansible_distribution == 'Fedora'
+
+- name: Install zsh
+  sudo: yes
+  dnf:  name=zsh state=latest
+  when: ansible_distribution == 'Fedora'
+  notify: Change shell to zsh
+
+- name: Install git
+  sudo: yes
+  dnf:  name=git state=latest
+  when: ansible_distribution == 'Fedora'
+
+- name: Install vim
+  sudo: yes
+  dnf:  name=vim state=latest
+  when: ansible_distribution == 'Fedora'
+
+- name: Install gcc
+  sudo: yes
+  dnf:  name=gcc state=latest
+  when: ansible_distribution == 'Fedora'
+
+- name: Install tmux
+  sudo: yes
+  dnf:  name=tmux state=latest
+  when: ansible_distribution == 'Fedora'
+
+
+# Dotfiles #####################################################################
+
+- name: Update zsh config
+  sudo: no
+  tags: dotfiles
+  git:  repo=ssh://git@github.com/elliottt/oh-my-zsh.git
+        accept_hostkey=yes
+        dest=~/.oh-my-zsh
+
+  notify: Create .zshrc symlink
+
+- name: Update tmux config
+  sudo: no
+  tags: dotfiles
+  git:  repo=ssh://git@github.com/elliottt/tmux-config.git
+        accept_hostkey=yes
+        dest=~/.tmux
+
+  notify: Create .tmux.conf symlink
+
+- name: Update vim config
+  sudo: no
+  tags: dotfiles
+  git:  repo=ssh://git@github.com/elliottt/vim-config.git
+        accept_hostkey=yes
+        dest=~/.vim
+
+  notify: Update vim plugins
