@@ -1,0 +1,5 @@
+
+- name: Install ghc-7.10.2
+  sudo: no
+  tags: haskell
+  script: install-ghc.sh 7.10.2 default

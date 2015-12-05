@@ -8,23 +8,33 @@
 
 - name: Install zsh
   sudo: yes
+  tags: tools
   dnf:  name=zsh state=latest
   when: ansible_distribution == 'Fedora'
   notify: Change shell to zsh
 
 - name: Install git
   sudo: yes
+  tags: tools
   dnf:  name=git state=latest
   when: ansible_distribution == 'Fedora'
 
 - name: Install vim
   sudo: yes
+  tags: tools
   dnf:  name=vim state=latest
   when: ansible_distribution == 'Fedora'
 
 - name: Install tmux
   sudo: yes
+  tags: tools
   dnf:  name=tmux state=latest
+  when: ansible_distribution == 'Fedora'
+
+- name: Install tar
+  sudo: yes
+  tags: tools
+  dnf:  name=tar state=latest
   when: ansible_distribution == 'Fedora'
 
 
