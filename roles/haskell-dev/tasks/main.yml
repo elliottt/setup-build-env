@@ -2,13 +2,12 @@
 # Packages #####################################################################
 
 - name: Install libgmp devel
-  sudo: yes
+  become: yes
   tags: haskell
   dnf:  name=gmp-devel state=latest
   when: ansible_distribution == 'Fedora'
 
 - name: Copy over ghc-7.10.2
-  sudo: no
   tags: haskell
   copy: src=ghc-7.10.2-x86_64-unknown-linux-deb7.tar.xz
         dest=~/local/ghc/

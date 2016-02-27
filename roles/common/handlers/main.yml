@@ -1,21 +1,17 @@
 
 - name: Change shell to zsh
-  sudo: yes
   command: "chsh {{ ansible_user_id }} -s /bin/zsh"
 
 - name: Update vim plugins
-  sudo: no
   tags: dotfiles
   command: ./boot.sh chdir=~/.vim
 
 - name: Create .tmux.conf symlink
-  sudo: no
   tags: dotfiles
   command: ln -s ~/.tmux/tmux.conf ~/.tmux.conf
            creates=~/.tmux.conf
 
 - name: Create .zshrc symlink
-  sudo: no
   tags: dotfiles
   command: ln -s ~/.oh-my-zsh/zshrc ~/.zshrc
            creates=~/.zshrc
